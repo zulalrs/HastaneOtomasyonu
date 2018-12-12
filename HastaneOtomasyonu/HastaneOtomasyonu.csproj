@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Doktor.cs" />
+    <Compile Include="Classes\Hasta.cs" />
     <Compile Include="Classes\Hemsire.cs" />
     <Compile Include="Classes\IMaasAlabilen.cs" />
     <Compile Include="Classes\Kisi.cs" />
+    <Compile Include="Classes\Personel.cs" />
     <Compile Include="Classes\Poliklinikler.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
