@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HastaneOtomasyonu.Classes
 {
-    public class Doktor:Kisi
+    public class Doktor:Kisi,IMaasAlabilen
     {
         public decimal Maas { get; set; }
        

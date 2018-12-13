@@ -17,8 +17,9 @@ namespace HastaneOtomasyonu
         {
             InitializeComponent();
         }
-        List<Doktor> kisiler = new List<Doktor>();
+        List<Doktor> doktorlar = new List<Doktor>();
         List<Doktor> aramalar = new List<Doktor>();
+        Doktor seciliKisi;
         private void FrmDoktor_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
@@ -38,9 +39,9 @@ namespace HastaneOtomasyonu
                 yenikisi.TCKN = txtTckn.Text;
                 yenikisi.Branslar = cmbBranslar.SelectedItem.ToString();
 
-                kisiler.Add(yenikisi);
+                doktorlar.Add(yenikisi);
                 FormuTemizle();
-                lstKisiler.Items.AddRange(kisiler.ToArray());
+                lstDoktorlar.Items.AddRange(doktorlar.ToArray());
             }
             catch (Exception ex)
             {
@@ -63,17 +64,16 @@ namespace HastaneOtomasyonu
                 else if (control is MaskedTextBox maskedTextBox)
                     maskedTextBox.Clear();
                 else if (control is ComboBox comboBox)
-                    comboBox.Text = null;
+                    comboBox.Text = string.Empty;
             }
         }
-
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (lstKisiler.SelectedItem == null) return;
-            Doktor seciliKisi = (Doktor)lstKisiler.SelectedItem;    
+            if (lstDoktorlar.SelectedItem == null) return;
+            seciliKisi = (Doktor)lstDoktorlar.SelectedItem;
             try
             {
-                seciliKisi.Ad = txtAd.Text; 
+                seciliKisi.Ad = txtAd.Text;
                 seciliKisi.Soyad = txtSoyad.Text;
                 seciliKisi.Telefon = mtxtTelefon.Text;
                 seciliKisi.Email = txtEmail.Text;
@@ -85,35 +85,31 @@ namespace HastaneOtomasyonu
                 MessageBox.Show(ex.Message);
             }
             FormuTemizle();
-            lstKisiler.Items.AddRange(kisiler.ToArray());
+            lstDoktorlar.Items.AddRange(doktorlar.ToArray());
         }
 
-        private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lstDoktorlar.SelectedItem == null) return;
 
-            if (lstKisiler.SelectedItem == null) return;
-
-            Doktor seciliKisi = (Doktor)lstKisiler.SelectedItem;
+            seciliKisi = (Doktor)lstDoktorlar.SelectedItem;
             txtAd.Text = seciliKisi.Ad;
             txtSoyad.Text = seciliKisi.Soyad;
             mtxtTelefon.Text = seciliKisi.Telefon;
             txtEmail.Text = seciliKisi.Email;
             txtTckn.Text = seciliKisi.TCKN;
             cmbBranslar.Text = seciliKisi.Branslar;
-
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < kisiler.Count; i++)
-            {
-                if (lstKisiler.SelectedIndex == i)
-                {
-                    kisiler.RemoveAt(i);
-                    lstKisiler.Items.RemoveAt(i);
-                    FormuTemizle();
-                }
-            }
+            if (lstDoktorlar.SelectedItem == null) return;
+
+            seciliKisi = (Doktor)lstDoktorlar.SelectedItem;
+            doktorlar.Remove(seciliKisi);
+
+            FormuTemizle();
+            lstDoktorlar.Items.AddRange(doktorlar.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)
@@ -121,12 +117,10 @@ namespace HastaneOtomasyonu
             string ara = txtAra.Text.ToLower();
             aramalar = new List<Doktor>();
 
-            kisiler.Where(kisi => kisi.Ad.ToLower().Contains(ara) || kisi.Soyad.ToLower().Contains(ara) || kisi.TCKN.StartsWith(ara)).ToList().ForEach(kisi => aramalar.Add(kisi));
+            doktorlar.Where(kisi => kisi.Ad.ToLower().Contains(ara) || kisi.Soyad.ToLower().Contains(ara) || kisi.TCKN.StartsWith(ara)).ToList().ForEach(kisi => aramalar.Add(kisi));
 
             FormuTemizle();
-            lstKisiler.Items.AddRange(aramalar.ToArray());
+            lstDoktorlar.Items.AddRange(aramalar.ToArray());
         }
-
-       
     }
 }

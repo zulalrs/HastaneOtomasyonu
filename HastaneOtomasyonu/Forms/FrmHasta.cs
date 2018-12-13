@@ -59,17 +59,19 @@ namespace HastaneOtomasyonu
                 }
                 else if (control is ListBox listBox)
                     listBox.Items.Clear();
-                
+                else if (control is ComboBox comboBox)
+                    comboBox.Text = string.Empty;
+
             }
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
-            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;    // Adresler esitlendigi icin icindeki tüm degerlerde esitlenecek. Birinde yapılan degisiklik digerini de etkileyecek.
+            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;   
             try
             {
-                seciliKisi.Ad = txtAd.Text; // secilikisi nesnesine text teki degeri atadıgımızda adresleri esit oldugu icin  listbox ta secilen nesnenin degeri de degisecek
+                seciliKisi.Ad = txtAd.Text;
                 seciliKisi.Soyad = txtSoyad.Text;
                 seciliKisi.Telefon = mtxtTelefon.Text;
                 seciliKisi.Email = txtEmail.Text;
@@ -98,15 +100,13 @@ namespace HastaneOtomasyonu
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < hastalar.Count; i++)
-            {
-                if (lstKisiler.SelectedIndex == i)
-                {
-                    hastalar.RemoveAt(i);
-                    lstKisiler.Items.RemoveAt(i);
-                    //FormuTemizle();
-                }
-            }
+            if (lstKisiler.SelectedItem == null) return;
+
+            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
+            hastalar.Remove(seciliKisi);
+
+            FormuTemizle();
+            lstKisiler.Items.AddRange(hastalar.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)

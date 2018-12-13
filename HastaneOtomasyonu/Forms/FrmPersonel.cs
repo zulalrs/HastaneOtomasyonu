@@ -67,10 +67,10 @@ namespace HastaneOtomasyonu
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
-            Personel seciliKisi = (Personel)lstKisiler.SelectedItem;    // Adresler esitlendigi icin icindeki tüm degerlerde esitlenecek. Birinde yapılan degisiklik digerini de etkileyecek.
+            Personel seciliKisi = (Personel)lstKisiler.SelectedItem;    
             try
             {
-                seciliKisi.Ad = txtAd.Text; // secilikisi nesnesine text teki degeri atadıgımızda adresleri esit oldugu icin  listbox ta secilen nesnenin degeri de degisecek
+                seciliKisi.Ad = txtAd.Text; 
                 seciliKisi.Soyad = txtSoyad.Text;
                 seciliKisi.Telefon = mtxtTelefon.Text;
                 seciliKisi.Email = txtEmail.Text;
@@ -99,15 +99,13 @@ namespace HastaneOtomasyonu
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < personel.Count; i++)
-            {
-                if (lstKisiler.SelectedIndex == i)
-                {
-                    personel.RemoveAt(i);
-                    lstKisiler.Items.RemoveAt(i);
-                    //FormuTemizle();
-                }
-            }
+            if (lstKisiler.SelectedItem == null) return;
+
+            Personel seciliKisi = (Personel)lstKisiler.SelectedItem;
+            personel.Remove(seciliKisi);
+
+            FormuTemizle();
+            lstKisiler.Items.AddRange(personel.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)
