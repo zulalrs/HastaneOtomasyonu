@@ -39,6 +39,7 @@ namespace HastaneOtomasyonu
                 yenikisi.Email = txtEmail.Text;
                 yenikisi.TCKN = txtTckn.Text;
                 yenikisi.Branslar = cmbBranslar.SelectedItem.ToString();
+                yenikisi.Maas = Convert.ToDecimal(nudHemsireMaas.Text);
 
                 hemsireler.Add(yenikisi);
                 FormuTemizle();
@@ -63,6 +64,10 @@ namespace HastaneOtomasyonu
                     listBox.Items.Clear();
                 else if (control is MaskedTextBox maskedTextBox)
                     maskedTextBox.Clear();
+                else if (control is ComboBox comboBox)
+                    comboBox.Text = string.Empty;
+                else if (control is NumericUpDown)
+                    control.Text = string.Empty;
             }
         }
 
@@ -78,6 +83,7 @@ namespace HastaneOtomasyonu
                 seciliKisi.Email = txtEmail.Text;
                 seciliKisi.TCKN = txtTckn.Text;
                 seciliKisi.Branslar = cmbBranslar.Text;
+                seciliKisi.Maas = Convert.ToDecimal(nudHemsireMaas.Text);
             }
             catch (Exception ex)
             {
@@ -98,6 +104,7 @@ namespace HastaneOtomasyonu
             txtEmail.Text = seciliKisi.Email;
             txtTckn.Text = seciliKisi.TCKN;
             cmbBranslar.Text = seciliKisi.Branslar;
+            nudHemsireMaas.Text = seciliKisi.Maas.ToString();
         }
 
         private void btnSil_Click(object sender, EventArgs e)
@@ -120,6 +127,15 @@ namespace HastaneOtomasyonu
 
             FormuTemizle();
             lstHemsireler.Items.AddRange(aramalar.ToArray());
+        }
+
+        private void nudHemsireMaas_ValueChanged(object sender, EventArgs e)
+        {
+            //nudHemsireMaas.DecimalPlaces = 2;//decimal
+            nudHemsireMaas.ThousandsSeparator = true;
+            nudHemsireMaas.Increment = 100;//artıs
+            nudHemsireMaas.Minimum = 1000; //en küçük değeri 10
+            nudHemsireMaas.Maximum = 30000; //en büyük değeri 30
         }
     }
 }

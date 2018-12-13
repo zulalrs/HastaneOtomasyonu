@@ -17,6 +17,12 @@ namespace HastaneOtomasyonu.Classes
     }
     public enum Unvanlar
     {
-
+        PratisyenDoktor,
+        UzmanDoktor,
+        OperatorDoktor,
+        YardımcıDocent,
+        Docent,
+        Profesor,
+        Ordinaryus
     }
 }

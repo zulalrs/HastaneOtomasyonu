@@ -19,14 +19,13 @@ namespace HastaneOtomasyonu
         }
         public static List<Hasta> hastalar = new List<Hasta>();
         List<Hasta> aramalar = new List<Hasta>();
-        Hasta seciliKisi;
-
+        
         private void FrmHasta_Load(object sender, EventArgs e)
         {
+            cmbCinsiyet.Items.AddRange(Enum.GetNames(typeof(cinsiyet)));
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             Hasta yenikisi = new Hasta();
@@ -37,11 +36,12 @@ namespace HastaneOtomasyonu
                 yenikisi.Telefon = mtxtTelefon.Text;
                 yenikisi.Email = txtEmail.Text;
                 yenikisi.TCKN = txtTckn.Text;
-
+                yenikisi.Cinsiyet = cmbCinsiyet.Text;
+                yenikisi.DogumTarihi = dtpDogumTarihi.Value;
 
                 hastalar.Add(yenikisi);
                 FormuTemizle();
-                lstHastalar.Items.AddRange(hastalar.ToArray());
+                lstKisiler.Items.AddRange(hastalar.ToArray());
             }
             catch (Exception ex)
             {
@@ -65,21 +65,24 @@ namespace HastaneOtomasyonu
                     comboBox.Text = string.Empty;
                 else if (control is MaskedTextBox maskedTextBox)
                     maskedTextBox.Clear();
-
+                else if (control is DateTimePicker)
+                    (control as DateTimePicker).Value = DateTime.Now;
             }
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (lstHastalar.SelectedItem == null) return;
-            seciliKisi = (Hasta)lstHastalar.SelectedItem;
+            if (lstKisiler.SelectedItem == null) return;
+            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;   
             try
             {
-                seciliKisi.Ad = txtAd.Text;
+                seciliKisi.Ad = txtAd.Text; 
                 seciliKisi.Soyad = txtSoyad.Text;
                 seciliKisi.Telefon = mtxtTelefon.Text;
                 seciliKisi.Email = txtEmail.Text;
                 seciliKisi.TCKN = txtTckn.Text;
+                seciliKisi.Cinsiyet = cmbCinsiyet.Text;
+                seciliKisi.DogumTarihi = dtpDogumTarihi.Value;
 
             }
             catch (Exception ex)
@@ -87,29 +90,31 @@ namespace HastaneOtomasyonu
                 MessageBox.Show(ex.Message);
             }
             FormuTemizle();
-            lstHastalar.Items.AddRange(hastalar.ToArray());
+            lstKisiler.Items.AddRange(hastalar.ToArray());
         }
 
         private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstHastalar.SelectedItem == null) return;
+            if (lstKisiler.SelectedItem == null) return;
 
-            seciliKisi = (Hasta)lstHastalar.SelectedItem;
+            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
             txtAd.Text = seciliKisi.Ad;
             txtSoyad.Text = seciliKisi.Soyad;
             mtxtTelefon.Text = seciliKisi.Telefon;
             txtEmail.Text = seciliKisi.Email;
             txtTckn.Text = seciliKisi.TCKN;
+            cmbCinsiyet.Text = seciliKisi.Cinsiyet;
+            dtpDogumTarihi.Value = seciliKisi.DogumTarihi;
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            if (lstHastalar.SelectedItem == null) return;
-            seciliKisi = (Hasta)lstHastalar.SelectedItem;
+            if (lstKisiler.SelectedItem == null) return;
+            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
             hastalar.Remove(seciliKisi);
 
             FormuTemizle();
-            lstHastalar.Items.AddRange(hastalar.ToArray());
+            lstKisiler.Items.AddRange(hastalar.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)
@@ -120,7 +125,7 @@ namespace HastaneOtomasyonu
             hastalar.Where(kisi => kisi.Ad.ToLower().Contains(ara) || kisi.Soyad.ToLower().Contains(ara) || kisi.TCKN.StartsWith(ara)).ToList().ForEach(kisi => aramalar.Add(kisi));
 
             FormuTemizle();
-            lstHastalar.Items.AddRange(aramalar.ToArray());
+            lstKisiler.Items.AddRange(aramalar.ToArray());
         }
     }
 }

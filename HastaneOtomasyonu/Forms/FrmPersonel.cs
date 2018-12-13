@@ -20,9 +20,10 @@ namespace HastaneOtomasyonu
         List<Personel> personel = new List<Personel>();
         List<Personel> aramalar = new List<Personel>();
         private void FrmPersonel_Load(object sender, EventArgs e)
-        {
+        { 
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
+            cmbGorev.Items.AddRange(Enum.GetNames(typeof(personelGorev)));
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -35,7 +36,8 @@ namespace HastaneOtomasyonu
                 yenikisi.Telefon = mtxtTelefon.Text;
                 yenikisi.Email = txtEmail.Text;
                 yenikisi.TCKN = txtTckn.Text;
-
+                yenikisi.Gorev = cmbGorev.SelectedItem.ToString();
+                yenikisi.Maas = Convert.ToDecimal(nudPersonelMaas.Text);
 
                 personel.Add(yenikisi);
                 FormuTemizle();
@@ -44,7 +46,7 @@ namespace HastaneOtomasyonu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }  
         }
         private void FormuTemizle()
         {
@@ -58,24 +60,28 @@ namespace HastaneOtomasyonu
                 }
                 else if (control is ListBox listBox)
                     listBox.Items.Clear();
-
-
+                else if (control is MaskedTextBox maskedTextBox)
+                    maskedTextBox.Clear();
+                else if (control is ComboBox comboBox)
+                    comboBox.Text = string.Empty;
+                else if (control is NumericUpDown)
+                    control.Text = string.Empty;
+                
             }
         }
-
-
-        private void btnGuncelle_Click(object sender, EventArgs e)
+      private void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
-            Personel seciliKisi = (Personel)lstKisiler.SelectedItem;    
+            Personel seciliKisi = (Personel)lstKisiler.SelectedItem;
             try
             {
-                seciliKisi.Ad = txtAd.Text; 
+                seciliKisi.Ad = txtAd.Text;
                 seciliKisi.Soyad = txtSoyad.Text;
                 seciliKisi.Telefon = mtxtTelefon.Text;
                 seciliKisi.Email = txtEmail.Text;
                 seciliKisi.TCKN = txtTckn.Text;
-
+                seciliKisi.Gorev = cmbGorev.Text;
+                seciliKisi.Maas = Convert.ToDecimal(nudPersonelMaas.Text);
             }
             catch (Exception ex)
             {
@@ -95,12 +101,13 @@ namespace HastaneOtomasyonu
             mtxtTelefon.Text = seciliKisi.Telefon;
             txtEmail.Text = seciliKisi.Email;
             txtTckn.Text = seciliKisi.TCKN;
+            cmbGorev.Text = seciliKisi.Gorev;
+            nudPersonelMaas.Text = seciliKisi.Maas.ToString();
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
-
             Personel seciliKisi = (Personel)lstKisiler.SelectedItem;
             personel.Remove(seciliKisi);
 
@@ -119,26 +126,18 @@ namespace HastaneOtomasyonu
             lstKisiler.Items.AddRange(aramalar.ToArray());
         }
 
-        private void btnKaydet_Click_1(object sender, EventArgs e)
+        //private void btnKaydet_Click_1(object sender, EventArgs e)
+        //{
+            
+        //}
+
+        private void nudPersonelMaas_ValueChanged(object sender, EventArgs e)
         {
-            Personel yenikisi = new Personel();
-            try
-            {
-                yenikisi.Ad = txtAd.Text;
-                yenikisi.Soyad = txtSoyad.Text;
-                yenikisi.Telefon = mtxtTelefon.Text;
-                yenikisi.Email = txtEmail.Text;
-                yenikisi.TCKN = txtTckn.Text;
-
-
-                personel.Add(yenikisi);
-                FormuTemizle();
-                lstKisiler.Items.AddRange(personel.ToArray());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //nudPersonelMaas.DecimalPlaces = 2;//decimal
+            nudPersonelMaas.ThousandsSeparator = true;
+            nudPersonelMaas.Increment = 100;//artıs
+            nudPersonelMaas.Minimum = 1000; //en küçük değeri 10
+            nudPersonelMaas.Maximum = 30000; //en büyük değeri 30 
         }
     }
 }

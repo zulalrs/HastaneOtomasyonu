@@ -11,4 +11,10 @@ namespace HastaneOtomasyonu.Classes
         public DateTime DogumTarihi {get;set;}
         public string Cinsiyet { get; set; }
     }
+    public enum cinsiyet
+    {
+        Kadin,
+        Erkek
+
+    };
 }

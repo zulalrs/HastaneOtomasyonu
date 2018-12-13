@@ -25,6 +25,7 @@ namespace HastaneOtomasyonu
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
             cmbBranslar.Items.AddRange(Enum.GetNames(typeof(Poliklinikler)));
+            cmbUnvan.Items.AddRange(Enum.GetNames(typeof(Unvanlar)));
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -38,6 +39,8 @@ namespace HastaneOtomasyonu
                 yenikisi.Email = txtEmail.Text;
                 yenikisi.TCKN = txtTckn.Text;
                 yenikisi.Branslar = cmbBranslar.SelectedItem.ToString();
+                yenikisi.Unvan = cmbUnvan.SelectedItem.ToString();
+                yenikisi.Maas = Convert.ToDecimal(nudDoktorMaas.Text);
 
                 doktorlar.Add(yenikisi);
                 FormuTemizle();
@@ -65,6 +68,8 @@ namespace HastaneOtomasyonu
                     maskedTextBox.Clear();
                 else if (control is ComboBox comboBox)
                     comboBox.Text = string.Empty;
+                else if (control is NumericUpDown)
+                    control.Text = string.Empty;
             }
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -79,6 +84,8 @@ namespace HastaneOtomasyonu
                 seciliKisi.Email = txtEmail.Text;
                 seciliKisi.TCKN = txtTckn.Text;
                 seciliKisi.Branslar = cmbBranslar.Text;
+                seciliKisi.Unvan = cmbUnvan.Text;
+                seciliKisi.Maas = Convert.ToDecimal(nudDoktorMaas.Text);
             }
             catch (Exception ex)
             {
@@ -99,6 +106,8 @@ namespace HastaneOtomasyonu
             txtEmail.Text = seciliKisi.Email;
             txtTckn.Text = seciliKisi.TCKN;
             cmbBranslar.Text = seciliKisi.Branslar;
+            cmbUnvan.Text = seciliKisi.Unvan;
+            nudDoktorMaas.Text = seciliKisi.Maas.ToString();
         }
 
         private void btnSil_Click(object sender, EventArgs e)
@@ -121,6 +130,15 @@ namespace HastaneOtomasyonu
 
             FormuTemizle();
             lstDoktorlar.Items.AddRange(aramalar.ToArray());
+        }
+
+        private void nudDoktorMaas_ValueChanged(object sender, EventArgs e)
+        {
+            //nudDoktorMaas.DecimalPlaces = 2;//decimal
+            nudDoktorMaas.ThousandsSeparator = true;
+            nudDoktorMaas.Increment = 100;//artıs
+            nudDoktorMaas.Minimum = 1000; //en küçük değeri 10
+            nudDoktorMaas.Maximum = 30000; //en büyük değeri 30
         }
     }
 }
