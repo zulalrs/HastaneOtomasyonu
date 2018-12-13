@@ -28,14 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.cmbDoktorlar = new System.Windows.Forms.ComboBox();
+            this.cmbPoliklinikler = new System.Windows.Forms.ComboBox();
+            this.lstRHastalar = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // cmbDoktorlar
+            // 
+            this.cmbDoktorlar.FormattingEnabled = true;
+            this.cmbDoktorlar.Location = new System.Drawing.Point(253, 238);
+            this.cmbDoktorlar.Name = "cmbDoktorlar";
+            this.cmbDoktorlar.Size = new System.Drawing.Size(213, 21);
+            this.cmbDoktorlar.TabIndex = 5;
+            this.cmbDoktorlar.SelectedIndexChanged += new System.EventHandler(this.cmbDoktorlar_SelectedIndexChanged);
+            // 
+            // cmbPoliklinikler
+            // 
+            this.cmbPoliklinikler.FormattingEnabled = true;
+            this.cmbPoliklinikler.Location = new System.Drawing.Point(253, 171);
+            this.cmbPoliklinikler.Name = "cmbPoliklinikler";
+            this.cmbPoliklinikler.Size = new System.Drawing.Size(213, 21);
+            this.cmbPoliklinikler.TabIndex = 6;
+            this.cmbPoliklinikler.SelectedIndexChanged += new System.EventHandler(this.cmbPoliklinikler_SelectedIndexChanged);
+            // 
+            // lstRHastalar
+            // 
+            this.lstRHastalar.FormattingEnabled = true;
+            this.lstRHastalar.Location = new System.Drawing.Point(19, 48);
+            this.lstRHastalar.Name = "lstRHastalar";
+            this.lstRHastalar.Size = new System.Drawing.Size(215, 355);
+            this.lstRHastalar.TabIndex = 4;
+            this.lstRHastalar.SelectedIndexChanged += new System.EventHandler(this.lstRHastalar_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(481, 84);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 289);
+            this.panel1.TabIndex = 3;
             // 
             // FrmRandevu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbDoktorlar);
+            this.Controls.Add(this.cmbPoliklinikler);
+            this.Controls.Add(this.lstRHastalar);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRandevu";
             this.Text = "FrmRandevu";
@@ -45,5 +87,10 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox cmbDoktorlar;
+        private System.Windows.Forms.ComboBox cmbPoliklinikler;
+        private System.Windows.Forms.ListBox lstRHastalar;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HastaneOtomasyonu.Classes
 {
-    class Hasta:Kisi
+    public class Hasta : Kisi
     {
+        public DateTime DogumTarihi {get;set;}
+        public string Cinsiyet { get; set; }
     }
 }

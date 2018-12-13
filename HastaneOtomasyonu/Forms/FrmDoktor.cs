@@ -17,7 +17,7 @@ namespace HastaneOtomasyonu
         {
             InitializeComponent();
         }
-        List<Doktor> doktorlar = new List<Doktor>();
+        public static List<Doktor> doktorlar = new List<Doktor>();
         List<Doktor> aramalar = new List<Doktor>();
         Doktor seciliKisi;
         private void FrmDoktor_Load(object sender, EventArgs e)

@@ -17,8 +17,10 @@ namespace HastaneOtomasyonu
         {
             InitializeComponent();
         }
-        List<Hasta> hastalar = new List<Hasta>();
+        public static List<Hasta> hastalar = new List<Hasta>();
         List<Hasta> aramalar = new List<Hasta>();
+        Hasta seciliKisi;
+
         private void FrmHasta_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
@@ -39,7 +41,7 @@ namespace HastaneOtomasyonu
 
                 hastalar.Add(yenikisi);
                 FormuTemizle();
-                lstKisiler.Items.AddRange(hastalar.ToArray());
+                lstHastalar.Items.AddRange(hastalar.ToArray());
             }
             catch (Exception ex)
             {
@@ -61,14 +63,16 @@ namespace HastaneOtomasyonu
                     listBox.Items.Clear();
                 else if (control is ComboBox comboBox)
                     comboBox.Text = string.Empty;
+                else if (control is MaskedTextBox maskedTextBox)
+                    maskedTextBox.Clear();
 
             }
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (lstKisiler.SelectedItem == null) return;
-            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;   
+            if (lstHastalar.SelectedItem == null) return;
+            seciliKisi = (Hasta)lstHastalar.SelectedItem;
             try
             {
                 seciliKisi.Ad = txtAd.Text;
@@ -83,14 +87,14 @@ namespace HastaneOtomasyonu
                 MessageBox.Show(ex.Message);
             }
             FormuTemizle();
-            lstKisiler.Items.AddRange(hastalar.ToArray());
+            lstHastalar.Items.AddRange(hastalar.ToArray());
         }
 
         private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstKisiler.SelectedItem == null) return;
+            if (lstHastalar.SelectedItem == null) return;
 
-            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
+            seciliKisi = (Hasta)lstHastalar.SelectedItem;
             txtAd.Text = seciliKisi.Ad;
             txtSoyad.Text = seciliKisi.Soyad;
             mtxtTelefon.Text = seciliKisi.Telefon;
@@ -100,13 +104,12 @@ namespace HastaneOtomasyonu
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            if (lstKisiler.SelectedItem == null) return;
-
-            Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
+            if (lstHastalar.SelectedItem == null) return;
+            seciliKisi = (Hasta)lstHastalar.SelectedItem;
             hastalar.Remove(seciliKisi);
 
             FormuTemizle();
-            lstKisiler.Items.AddRange(hastalar.ToArray());
+            lstHastalar.Items.AddRange(hastalar.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)
@@ -117,7 +120,7 @@ namespace HastaneOtomasyonu
             hastalar.Where(kisi => kisi.Ad.ToLower().Contains(ara) || kisi.Soyad.ToLower().Contains(ara) || kisi.TCKN.StartsWith(ara)).ToList().ForEach(kisi => aramalar.Add(kisi));
 
             FormuTemizle();
-            lstKisiler.Items.AddRange(aramalar.ToArray());
+            lstHastalar.Items.AddRange(aramalar.ToArray());
         }
     }
 }

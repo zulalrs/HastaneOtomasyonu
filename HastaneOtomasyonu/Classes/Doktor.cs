@@ -11,6 +11,12 @@ namespace HastaneOtomasyonu.Classes
         public decimal Maas { get; set; }
        
         public string Branslar { get; set; }
-        
+
+        public string Unvan { get; set; }
+
+    }
+    public enum Unvanlar
+    {
+
     }
 }
