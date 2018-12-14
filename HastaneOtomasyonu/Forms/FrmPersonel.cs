@@ -115,6 +115,15 @@ namespace HastaneOtomasyonu
             lstKisiler.Items.AddRange(personel.ToArray());
         }
 
+        private void nudPersonelMaas_ValueChanged(object sender, EventArgs e)
+        {
+            //nudPersonelMaas.DecimalPlaces = 2;//decimal
+            nudPersonelMaas.ThousandsSeparator = true;
+            nudPersonelMaas.Increment = 100;//artıs
+            nudPersonelMaas.Minimum = 1000; //en küçük değeri 10
+            nudPersonelMaas.Maximum = 30000; //en büyük değeri 30 
+        }
+
         private void txtAra_TextChanged(object sender, EventArgs e)
         {
             string ara = txtAra.Text.ToLower();
@@ -124,20 +133,6 @@ namespace HastaneOtomasyonu
 
             FormuTemizle();
             lstKisiler.Items.AddRange(aramalar.ToArray());
-        }
-
-        //private void btnKaydet_Click_1(object sender, EventArgs e)
-        //{
-            
-        //}
-
-        private void nudPersonelMaas_ValueChanged(object sender, EventArgs e)
-        {
-            //nudPersonelMaas.DecimalPlaces = 2;//decimal
-            nudPersonelMaas.ThousandsSeparator = true;
-            nudPersonelMaas.Increment = 100;//artıs
-            nudPersonelMaas.Minimum = 1000; //en küçük değeri 10
-            nudPersonelMaas.Maximum = 30000; //en büyük değeri 30 
         }
     }
 }

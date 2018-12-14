@@ -31,7 +31,7 @@
             this.cmbDoktorlar = new System.Windows.Forms.ComboBox();
             this.cmbPoliklinikler = new System.Windows.Forms.ComboBox();
             this.lstRHastalar = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // cmbDoktorlar
@@ -61,12 +61,12 @@
             this.lstRHastalar.TabIndex = 4;
             this.lstRHastalar.SelectedIndexChanged += new System.EventHandler(this.lstRHastalar_SelectedIndexChanged);
             // 
-            // panel1
+            // flowLayoutPanel1
             // 
-            this.panel1.Location = new System.Drawing.Point(481, 84);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 289);
-            this.panel1.TabIndex = 3;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(472, 148);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 213);
+            this.flowLayoutPanel1.TabIndex = 7;
             // 
             // FrmRandevu
             // 
@@ -74,10 +74,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.cmbDoktorlar);
             this.Controls.Add(this.cmbPoliklinikler);
             this.Controls.Add(this.lstRHastalar);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRandevu";
             this.Text = "FrmRandevu";
@@ -91,6 +91,6 @@
         private System.Windows.Forms.ComboBox cmbDoktorlar;
         private System.Windows.Forms.ComboBox cmbPoliklinikler;
         private System.Windows.Forms.ListBox lstRHastalar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

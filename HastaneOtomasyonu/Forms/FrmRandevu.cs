@@ -23,38 +23,29 @@ namespace HastaneOtomasyonu
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
 
-            int x = 40, y = 20, sayac = 0;
+          
             DateTime baslangic = new DateTime(2000, 1, 1, 9, 0, 0);
             do
-            {
-                if (sayac % 4 == 0)
+            {             
+               if (baslangic.Hour == 12)
                 {
-                    x = 40;
-                    y += 30;
-                }
-                if (baslangic.Hour == 12)
-                {
-                    y -= 30;
                     baslangic = baslangic.AddHours(1);
                     continue;
                 }
                 Button button = new Button();
-                Point btnPoint = new Point(x, y);
-                button.Location = btnPoint;
                 button.Name = baslangic.ToShortTimeString();
                 button.Text = baslangic.ToShortTimeString();
                 button.Width = 50;
                 button.Height = 25;
                 button.Click += Button_Click;
-                panel1.Controls.Add(button);
-                x += 60;
-                sayac++;
+                flowLayoutPanel1.Controls.Add(button);
+
                 baslangic = baslangic.AddMinutes(15);
 
             } while (!(baslangic.Hour == 15));
 
             lstRHastalar.Items.AddRange(FrmHasta.hastalar.ToArray());
-            panel1.Visible = false;
+            flowLayoutPanel1.Visible = false;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -83,7 +74,7 @@ namespace HastaneOtomasyonu
 
         private void cmbDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel1.Visible = true;
+            flowLayoutPanel1.Visible = true;
         }
     }
 }

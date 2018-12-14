@@ -138,7 +138,7 @@
             this.txtAra.Name = "txtAra";
             this.txtAra.Size = new System.Drawing.Size(217, 26);
             this.txtAra.TabIndex = 106;
-            this.txtAra.Click += new System.EventHandler(this.txtAra_TextChanged);
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // lstKisiler
             // 
