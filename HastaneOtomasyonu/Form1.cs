@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace HastaneOtomasyonu
 {
@@ -24,12 +28,12 @@ namespace HastaneOtomasyonu
         FrmPersonel frmPersonel;
         FrmRandevu frmRandevu;
 
-
         private void doktorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmDoktor == null || frmDoktor.IsDisposed)
             {
                 frmDoktor = new FrmDoktor();
+                FrmDoktor.Doktorlar = İceAktar(FrmDoktor.Doktorlar);
                 frmDoktor.MdiParent = this;
                 frmDoktor.Show();
             }
@@ -42,10 +46,11 @@ namespace HastaneOtomasyonu
             if (frmHemsire == null || frmHemsire.IsDisposed)
             {
                 frmHemsire = new FrmHemsire();
+                FrmHemsire.Hemsireler = İceAktar(FrmHemsire.Hemsireler);
                 frmHemsire.MdiParent = this;
                 frmHemsire.Show();
             }
-            else frmHemsire.Activate();           
+            else frmHemsire.Activate();
         }
 
         private void personelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +58,7 @@ namespace HastaneOtomasyonu
             if (frmPersonel == null || frmPersonel.IsDisposed)
             {
                 frmPersonel = new FrmPersonel();
+                FrmPersonel.Personeller = İceAktar(FrmPersonel.Personeller);
                 frmPersonel.MdiParent = this;
                 frmPersonel.Show();
             }
@@ -65,6 +71,7 @@ namespace HastaneOtomasyonu
             if (frmHasta == null || frmHasta.IsDisposed)
             {
                 frmHasta = new FrmHasta();
+                FrmHasta.Hastalar = İceAktar(FrmHasta.Hastalar);
                 frmHasta.MdiParent = this;
                 frmHasta.Show();
             }
@@ -82,8 +89,49 @@ namespace HastaneOtomasyonu
             else frmRandevu.Activate();
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DısaAktar(FrmDoktor.Doktorlar);
+            this.DısaAktar(FrmHemsire.Hemsireler);
+            this.DısaAktar(FrmPersonel.Personeller);
+            this.DısaAktar(FrmHasta.Hastalar);
+        }
 
+        public void DısaAktar<T>(T kisiler)
+        {
+            try
+            {
+                if (kisiler == null) return;
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                TextWriter textWriter = new StreamWriter($"{kisiler.ToString().Substring(33)}");
+                serializer.Serialize(textWriter, kisiler);
+                textWriter.Close();
+                textWriter.Dispose();
+            }
+            catch (Exception ex) { throw ex; }
+        }
 
+        public T İceAktar<T>(T kisiler)
+        {           
+            try
+            {
+                XmlSerializer xmlserializer = new XmlSerializer(typeof(T));
+                XmlReader reader =new XmlTextReader($"{kisiler.ToString().Substring(33)}");
+                if (xmlserializer.CanDeserialize(reader))
+                {
+                    kisiler = (T)xmlserializer.Deserialize(reader);
+                    reader.Close();
+                    reader.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Lutfen dogru bir xml dosyasını seciniz");
+                }
+            }
+            catch (FileNotFoundException) { return kisiler; }
+            catch (Exception ex) { throw ex; }
 
+            return kisiler;
+        }
     }
 }

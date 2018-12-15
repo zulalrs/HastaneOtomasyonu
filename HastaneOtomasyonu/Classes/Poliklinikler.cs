@@ -8,15 +8,19 @@ namespace HastaneOtomasyonu.Classes
 {
     public enum Poliklinikler
     {
-        Dahiliye,
-        KalpDamarCerrahisi,
-        Dis,
-        Goz,
-        KulakBurunBogaz,
-        Cildiye,
+        AğızVeDişSağlığı,
+        BeslenmeVeDiyet,
         BeyinVeSinirCerrahisi,
+        ÇocukHastalıkları,
+        GenelCerrahi,
+        GöğüsHastalıkları,
+        GözHastalıkları,
+        İçHastalıkları,
+        KalpVeDamarCerrahisi,
+        Kardiyoloji,
+        KulakBurunBoğazHastalıkları,    
         Ortapedi,
-        Psikiyatri,
+        Pedagoji,
         PlastikCerrahi
     }
 }

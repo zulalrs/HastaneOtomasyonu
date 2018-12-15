@@ -18,15 +18,18 @@ namespace HastaneOtomasyonu
             InitializeComponent();
         }
 
+        public static List<Hemsire> Hemsireler = new List<Hemsire>();
+        List<Hemsire> aramalar = new List<Hemsire>();
+        Hemsire seciliKisi;
+
         private void FrmHemsire_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
             cmbBranslar.Items.AddRange(Enum.GetNames(typeof(Poliklinikler)));
+            lstHemsireler.Items.AddRange(Hemsireler.ToArray());
+
         }
-        List<Hemsire> hemsireler = new List<Hemsire>();
-        List<Hemsire> aramalar = new List<Hemsire>();
-        Hemsire seciliKisi;
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
@@ -41,9 +44,9 @@ namespace HastaneOtomasyonu
                 yenikisi.Branslar = cmbBranslar.SelectedItem.ToString();
                 yenikisi.Maas = Convert.ToDecimal(nudHemsireMaas.Text);
 
-                hemsireler.Add(yenikisi);
+                Hemsireler.Add(yenikisi);
                 FormuTemizle();
-                lstHemsireler.Items.AddRange(hemsireler.ToArray());
+                lstHemsireler.Items.AddRange(Hemsireler.ToArray());
             }
             catch (Exception ex)
             {
@@ -90,7 +93,7 @@ namespace HastaneOtomasyonu
                 MessageBox.Show(ex.Message);
             }
             FormuTemizle();
-            lstHemsireler.Items.AddRange(hemsireler.ToArray());
+            lstHemsireler.Items.AddRange(Hemsireler.ToArray());
         }
 
         private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,10 +115,10 @@ namespace HastaneOtomasyonu
             if (lstHemsireler.SelectedItem == null) return;
 
             seciliKisi = (Hemsire)lstHemsireler.SelectedItem;
-            hemsireler.Remove(seciliKisi);
+            Hemsireler.Remove(seciliKisi);
 
             FormuTemizle();
-            lstHemsireler.Items.AddRange(hemsireler.ToArray());
+            lstHemsireler.Items.AddRange(Hemsireler.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)
@@ -123,7 +126,7 @@ namespace HastaneOtomasyonu
             string ara = txtAra.Text.ToLower();
             aramalar = new List<Hemsire>();
 
-            hemsireler.Where(kisi => kisi.Ad.ToLower().Contains(ara) || kisi.Soyad.ToLower().Contains(ara) || kisi.TCKN.StartsWith(ara)).ToList().ForEach(kisi => aramalar.Add(kisi));
+            Hemsireler.Where(kisi => kisi.Ad.ToLower().Contains(ara) || kisi.Soyad.ToLower().Contains(ara) || kisi.TCKN.StartsWith(ara)).ToList().ForEach(kisi => aramalar.Add(kisi));
 
             FormuTemizle();
             lstHemsireler.Items.AddRange(aramalar.ToArray());

@@ -37,7 +37,7 @@
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.txtAra = new System.Windows.Forms.TextBox();
-            this.lstKisiler = new System.Windows.Forms.ListBox();
+            this.lstHastalar = new System.Windows.Forms.ListBox();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.txtTckn = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -138,16 +138,16 @@
             this.txtAra.TabIndex = 88;
             this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
-            // lstKisiler
+            // lstHastalar
             // 
-            this.lstKisiler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lstKisiler.FormattingEnabled = true;
-            this.lstKisiler.ItemHeight = 16;
-            this.lstKisiler.Location = new System.Drawing.Point(514, 81);
-            this.lstKisiler.Name = "lstKisiler";
-            this.lstKisiler.Size = new System.Drawing.Size(211, 324);
-            this.lstKisiler.TabIndex = 87;
-            this.lstKisiler.Click += new System.EventHandler(this.lstKisiler_SelectedIndexChanged);
+            this.lstHastalar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lstHastalar.FormattingEnabled = true;
+            this.lstHastalar.ItemHeight = 16;
+            this.lstHastalar.Location = new System.Drawing.Point(514, 81);
+            this.lstHastalar.Name = "lstHastalar";
+            this.lstHastalar.Size = new System.Drawing.Size(211, 324);
+            this.lstHastalar.TabIndex = 87;
+            this.lstHastalar.Click += new System.EventHandler(this.lstKisiler_SelectedIndexChanged);
             // 
             // btnKaydet
             // 
@@ -262,7 +262,7 @@
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.txtAra);
-            this.Controls.Add(this.lstKisiler);
+            this.Controls.Add(this.lstHastalar);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.txtTckn);
             this.Controls.Add(this.label5);
@@ -293,7 +293,7 @@
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.TextBox txtAra;
-        private System.Windows.Forms.ListBox lstKisiler;
+        private System.Windows.Forms.ListBox lstHastalar;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.TextBox txtTckn;
         private System.Windows.Forms.Label label5;

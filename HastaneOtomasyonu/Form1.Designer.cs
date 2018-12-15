@@ -71,7 +71,7 @@
             // 
             this.personelToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.personelToolStripMenuItem.Name = "personelToolStripMenuItem";
-            this.personelToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
+            this.personelToolStripMenuItem.Size = new System.Drawing.Size(72, 23);
             this.personelToolStripMenuItem.Text = "Personel";
             this.personelToolStripMenuItem.Click += new System.EventHandler(this.personelToolStripMenuItem_Click);
             // 
@@ -101,6 +101,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Hastane Otomasyonu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

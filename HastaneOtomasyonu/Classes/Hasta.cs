@@ -14,7 +14,8 @@ namespace HastaneOtomasyonu.Classes
     public enum cinsiyet
     {
         Kadin,
-        Erkek
+        Erkek,
+        Belirsiz
 
     };
 }

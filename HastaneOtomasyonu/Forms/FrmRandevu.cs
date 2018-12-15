@@ -17,17 +17,18 @@ namespace HastaneOtomasyonu
         {
             InitializeComponent();
         }
-
+        FrmHasta frmHasta = new FrmHasta();
+        FrmDoktor frmDoktor = new FrmDoktor();
         private void FrmRandevu_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
 
-          
+
             DateTime baslangic = new DateTime(2000, 1, 1, 9, 0, 0);
             do
-            {             
-               if (baslangic.Hour == 12)
+            {
+                if (baslangic.Hour == 12)
                 {
                     baslangic = baslangic.AddHours(1);
                     continue;
@@ -44,7 +45,8 @@ namespace HastaneOtomasyonu
 
             } while (!(baslangic.Hour == 15));
 
-            lstRHastalar.Items.AddRange(FrmHasta.hastalar.ToArray());
+
+            lstRHastalar.Items.AddRange(FrmHasta.Hastalar.ToArray());
             flowLayoutPanel1.Visible = false;
         }
 
@@ -63,7 +65,7 @@ namespace HastaneOtomasyonu
         private void cmbPoliklinikler_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbDoktorlar.Items.Clear();
-            foreach (Doktor hekimler in FrmDoktor.doktorlar)
+            foreach (Doktor hekimler in FrmDoktor.Doktorlar)
             {
                 if (cmbPoliklinikler.Text == hekimler.Branslar)
                 {

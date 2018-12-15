@@ -14,6 +14,10 @@ namespace HastaneOtomasyonu.Classes
 
         public string Unvan { get; set; }
 
+        public override string ToString()
+        {
+            return $"{this.Unvan} {this.Ad} {this.Soyad}";
+        }
     }
     public enum Unvanlar
     {
@@ -23,6 +27,9 @@ namespace HastaneOtomasyonu.Classes
         YardımcıDocent,
         Docent,
         Profesor,
-        Ordinaryus
+        Ordinaryus,
+        Pedagog,
+        Diyetisyen,
+        DisHekimi
     }
 }
