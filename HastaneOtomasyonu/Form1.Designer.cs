@@ -34,6 +34,7 @@
             this.personelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hastaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.randevuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.randevuListesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,8 @@
             this.hemşireToolStripMenuItem,
             this.personelToolStripMenuItem,
             this.hastaToolStripMenuItem,
-            this.randevuToolStripMenuItem});
+            this.randevuToolStripMenuItem,
+            this.randevuListesiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(984, 27);
@@ -71,7 +73,7 @@
             // 
             this.personelToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.personelToolStripMenuItem.Name = "personelToolStripMenuItem";
-            this.personelToolStripMenuItem.Size = new System.Drawing.Size(72, 23);
+            this.personelToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
             this.personelToolStripMenuItem.Text = "Personel";
             this.personelToolStripMenuItem.Click += new System.EventHandler(this.personelToolStripMenuItem_Click);
             // 
@@ -90,6 +92,14 @@
             this.randevuToolStripMenuItem.Size = new System.Drawing.Size(74, 23);
             this.randevuToolStripMenuItem.Text = "Randevu";
             this.randevuToolStripMenuItem.Click += new System.EventHandler(this.randevuToolStripMenuItem_Click);
+            // 
+            // randevuListesiToolStripMenuItem
+            // 
+            this.randevuListesiToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.randevuListesiToolStripMenuItem.Name = "randevuListesiToolStripMenuItem";
+            this.randevuListesiToolStripMenuItem.Size = new System.Drawing.Size(109, 23);
+            this.randevuListesiToolStripMenuItem.Text = "Randevu Listesi";
+            this.randevuListesiToolStripMenuItem.Click += new System.EventHandler(this.randevuListesiToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -118,6 +128,7 @@
         private System.Windows.Forms.ToolStripMenuItem personelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hastaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem randevuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem randevuListesiToolStripMenuItem;
     }
 }
 

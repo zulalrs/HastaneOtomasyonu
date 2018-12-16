@@ -1,4 +1,5 @@
 ﻿using HastaneOtomasyonu.Classes;
+using HastaneOtomasyonu.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,7 @@ namespace HastaneOtomasyonu
         FrmHemsire frmHemsire;
         FrmPersonel frmPersonel;
         FrmRandevu frmRandevu;
+        FrmRandevuListesi frmRandevuListesi;
 
         private void doktorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -129,6 +131,17 @@ namespace HastaneOtomasyonu
             catch (Exception ex) { throw ex; }
 
             return kisiler;
+        }
+
+        private void randevuListesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmRandevuListesi == null || frmRandevuListesi.IsDisposed)
+            {
+                frmRandevuListesi = new FrmRandevuListesi();
+                frmRandevuListesi.MdiParent = this;
+                frmRandevuListesi.Show();
+            }
+            else frmRandevuListesi.Activate();
         }
     }
 }
