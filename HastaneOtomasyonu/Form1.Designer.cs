@@ -51,7 +51,8 @@
             this.randevuListesiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(984, 63);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1059, 59);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,7 +62,7 @@
             this.doktorToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.byndoktor;
             this.doktorToolStripMenuItem.Name = "doktorToolStripMenuItem";
             this.doktorToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.doktorToolStripMenuItem.Size = new System.Drawing.Size(86, 59);
+            this.doktorToolStripMenuItem.Size = new System.Drawing.Size(86, 55);
             this.doktorToolStripMenuItem.Text = "Doktor";
             this.doktorToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.doktorToolStripMenuItem.Click += new System.EventHandler(this.doktorToolStripMenuItem_Click);
@@ -72,7 +73,7 @@
             this.hemşireToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.hemsire2;
             this.hemşireToolStripMenuItem.Name = "hemşireToolStripMenuItem";
             this.hemşireToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.hemşireToolStripMenuItem.Size = new System.Drawing.Size(93, 59);
+            this.hemşireToolStripMenuItem.Size = new System.Drawing.Size(93, 55);
             this.hemşireToolStripMenuItem.Text = "Hemşire";
             this.hemşireToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.hemşireToolStripMenuItem.Click += new System.EventHandler(this.hemşireToolStripMenuItem_Click);
@@ -83,7 +84,7 @@
             this.personelToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.personel;
             this.personelToolStripMenuItem.Name = "personelToolStripMenuItem";
             this.personelToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.personelToolStripMenuItem.Size = new System.Drawing.Size(95, 59);
+            this.personelToolStripMenuItem.Size = new System.Drawing.Size(94, 55);
             this.personelToolStripMenuItem.Text = "Personel";
             this.personelToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.personelToolStripMenuItem.Click += new System.EventHandler(this.personelToolStripMenuItem_Click);
@@ -94,7 +95,7 @@
             this.hastaToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.hasta;
             this.hastaToolStripMenuItem.Name = "hastaToolStripMenuItem";
             this.hastaToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.hastaToolStripMenuItem.Size = new System.Drawing.Size(78, 59);
+            this.hastaToolStripMenuItem.Size = new System.Drawing.Size(78, 55);
             this.hastaToolStripMenuItem.Text = "Hasta";
             this.hastaToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.hastaToolStripMenuItem.Click += new System.EventHandler(this.hastaToolStripMenuItem_Click);
@@ -105,7 +106,7 @@
             this.randevuToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.takvimsaat;
             this.randevuToolStripMenuItem.Name = "randevuToolStripMenuItem";
             this.randevuToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.randevuToolStripMenuItem.Size = new System.Drawing.Size(96, 59);
+            this.randevuToolStripMenuItem.Size = new System.Drawing.Size(96, 55);
             this.randevuToolStripMenuItem.Text = "Randevu";
             this.randevuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.randevuToolStripMenuItem.Click += new System.EventHandler(this.randevuToolStripMenuItem_Click);
@@ -116,7 +117,7 @@
             this.randevuListesiToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.defter;
             this.randevuListesiToolStripMenuItem.Name = "randevuListesiToolStripMenuItem";
             this.randevuListesiToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.randevuListesiToolStripMenuItem.Size = new System.Drawing.Size(131, 59);
+            this.randevuListesiToolStripMenuItem.Size = new System.Drawing.Size(131, 55);
             this.randevuListesiToolStripMenuItem.Text = "Randevu Listesi";
             this.randevuListesiToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.randevuListesiToolStripMenuItem.Click += new System.EventHandler(this.randevuListesiToolStripMenuItem_Click);
@@ -125,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(1059, 611);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;

@@ -10,7 +10,7 @@ namespace HastaneOtomasyonu.Classes
     {
         public Doktor Doktor { get; set; }
         public Hasta Hasta { get; set; }
-        public Poliklinikler poliklinikler { get; set; }
+        public Poliklinikler poliklinik { get; set; }
 
         public string  Saat { get; set; }
 

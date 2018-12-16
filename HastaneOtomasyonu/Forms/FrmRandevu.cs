@@ -119,13 +119,10 @@ namespace HastaneOtomasyonu
 
         private void btnRandevuAl_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 if (seciliButton == null)
-                {
                     throw new Exception("Lütfen bir randevu saati seçiniz.");
-                }
                 else
                 {
                     DialogResult cevap = MessageBox.Show("Randevu saatini onaylıyor musunuz?", "Onay", MessageBoxButtons.YesNo);
@@ -134,12 +131,12 @@ namespace HastaneOtomasyonu
                         Randevu randevu = new Randevu();
                         randevu.Doktor = cmbDoktorlar.SelectedItem as Doktor;
                         randevu.Hasta = lstRHastalar.SelectedItem as Hasta;
-                        randevu.poliklinikler = (Poliklinikler)Enum.Parse(typeof(Poliklinikler), cmbPoliklinikler.SelectedItem.ToString());
+                        randevu.poliklinik = (Poliklinikler)Enum.Parse(typeof(Poliklinikler), cmbPoliklinikler.SelectedItem.ToString());
                         randevu.Saat = seciliButton.Text;
 
                         Randevular.Add(randevu);
                         seciliButton.BackColor = Color.LightGray;
-                        MessageBox.Show("Randevu başarıyla kaydedilmiştir.");
+                        MessageBox.Show("Randevu  başarıyla kaydedilmiştir.");
                     }
                     else return;
                 }
@@ -150,6 +147,8 @@ namespace HastaneOtomasyonu
             }
             lstRHastalar.SelectedItem = null;
             cmbDoktorlar.Items.Clear();
+            cmbDoktorlar.Text = string.Empty;
+            cmbPoliklinikler.Text = string.Empty;
             cmbPoliklinikler.Items.Clear();
             flowLayoutPanel1.Controls.Clear();
         }
