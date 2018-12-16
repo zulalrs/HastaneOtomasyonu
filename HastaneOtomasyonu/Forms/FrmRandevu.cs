@@ -17,12 +17,18 @@ namespace HastaneOtomasyonu
         {
             InitializeComponent();
         }
-        FrmHasta frmHasta = new FrmHasta();
-        FrmDoktor frmDoktor = new FrmDoktor();
+        public static List<Randevu> Randevular = new List<Randevu>();
+        Doktor seciliDoktor;
+        Hasta seciliHasta;
+        Button seciliButon;
         private void FrmRandevu_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
+
+            lstRHastalar.Items.AddRange(FrmHasta.Hastalar.ToArray());
+            flowLayoutPanel1.Visible = false;
+
 
 
             DateTime baslangic = new DateTime(2000, 1, 1, 9, 0, 0);
@@ -58,8 +64,13 @@ namespace HastaneOtomasyonu
 
         private void lstRHastalar_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lstRHastalar.SelectedItem == null) return;
             cmbPoliklinikler.Items.Clear();
+            cmbDoktorlar.Items.Clear();
+            cmbDoktorlar.Text = string.Empty;
+            flowLayoutPanel1.Controls.Clear();
             cmbPoliklinikler.Items.AddRange(Enum.GetNames(typeof(Poliklinikler)));
+            seciliHasta = lstRHastalar.SelectedItem as Hasta;
         }
 
         private void cmbPoliklinikler_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,6 +88,44 @@ namespace HastaneOtomasyonu
         private void cmbDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
         {
             flowLayoutPanel1.Visible = true;
+        }
+
+        private void btnRandevuAl_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                if (seciliButon == null)
+                {
+                    throw new Exception("Lütfen bir randevu saati seçiniz.");
+                }
+                else
+                {
+                    DialogResult cevap = MessageBox.Show("Randevu saatini onaylıyor musunuz?", "Onay", MessageBoxButtons.YesNo);
+                    if (cevap == DialogResult.Yes)
+                    {
+                        Randevu randevu = new Randevu();
+                        randevu.Doktor = cmbDoktorlar.SelectedItem as Doktor;
+                        randevu.Hasta = lstRHastalar.SelectedItem as Hasta;
+                        randevu.poliklinikler = (Poliklinikler)Enum.Parse(typeof(Poliklinikler), cmbPoliklinikler.SelectedItem.ToString());
+                        randevu.Saat = seciliButon.Text;
+
+                        Randevular.Add(randevu);
+                        seciliButon.BackColor = Color.LightGray;
+                        MessageBox.Show("Randevu | başarıyla kaydedilmiştir.");
+                    }
+                    else return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            lstRHastalar.SelectedItem = null;
+            cmbDoktorlar.Items.Clear();
+            cmbPoliklinikler.Items.Clear();
+            flowLayoutPanel1.Controls.Clear();
         }
     }
 }

@@ -32,6 +32,7 @@
             this.cmbPoliklinikler = new System.Windows.Forms.ComboBox();
             this.lstRHastalar = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnRandevuAl = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbDoktorlar
@@ -68,12 +69,23 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 213);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
+            // btnRandevuAl
+            // 
+            this.btnRandevuAl.Location = new System.Drawing.Point(318, 379);
+            this.btnRandevuAl.Name = "btnRandevuAl";
+            this.btnRandevuAl.Size = new System.Drawing.Size(75, 23);
+            this.btnRandevuAl.TabIndex = 8;
+            this.btnRandevuAl.Text = "Randevu Al";
+            this.btnRandevuAl.UseVisualStyleBackColor = true;
+            this.btnRandevuAl.Click += new System.EventHandler(this.btnRandevuAl_Click);
+            // 
             // FrmRandevu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRandevuAl);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.cmbDoktorlar);
             this.Controls.Add(this.cmbPoliklinikler);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.ComboBox cmbPoliklinikler;
         private System.Windows.Forms.ListBox lstRHastalar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnRandevuAl;
     }
 }
