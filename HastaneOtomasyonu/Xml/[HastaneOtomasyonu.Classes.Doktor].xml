@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDoktor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Doktor>
+    <Ad>Akın</Ad>
+    <Soyad>Yıldız</Soyad>
+    <Telefon>(555)837 43 87</Telefon>
+    <Email>ayildiz@gmail.com</Email>
+    <TCKN>12302973094</TCKN>
+    <Maas>3500</Maas>
+    <Branslar>AğızVeDişSağlığı</Branslar>
+    <Unvan>DisHekimi</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Güngör</Ad>
+    <Soyad>Ateş</Soyad>
+    <Telefon>(505)950 95 40</Telefon>
+    <Email>gates@gmail.com</Email>
+    <TCKN>19904239057</TCKN>
+    <Maas>3600</Maas>
+    <Branslar>KulakBurunBoğazHastalıkları</Branslar>
+    <Unvan>YardımcıDocent</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Oya</Ad>
+    <Soyad>Yönal</Soyad>
+    <Telefon>(535)872 58 47</Telefon>
+    <Email>oyonal@gmail.com</Email>
+    <TCKN>28595843950</TCKN>
+    <Maas>3600</Maas>
+    <Branslar>Pedagoji</Branslar>
+    <Unvan>Pedagog</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Gülseren</Ad>
+    <Soyad>Kayalar</Soyad>
+    <Telefon>(533)934 90 50</Telefon>
+    <Email>gkayalar@gmail.com</Email>
+    <TCKN>32470754507</TCKN>
+    <Maas>3700</Maas>
+    <Branslar>GöğüsHastalıkları</Branslar>
+    <Unvan>OperatorDoktor</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Ahmet</Ad>
+    <Soyad>Demir</Soyad>
+    <Telefon>(535)798 45 74</Telefon>
+    <Email>ademir@gmail.com</Email>
+    <TCKN>72837485748</TCKN>
+    <Maas>4800</Maas>
+    <Branslar>KalpVeDamarCerrahisi</Branslar>
+    <Unvan>Profesor</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Görkem</Ad>
+    <Soyad>Sucu</Soyad>
+    <Telefon>(545)374 09 75</Telefon>
+    <Email>gsucu@gmail.com</Email>
+    <TCKN>29489454095</TCKN>
+    <Maas>3300</Maas>
+    <Branslar>AğızVeDişSağlığı</Branslar>
+    <Unvan>DisHekimi</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Ömer</Ad>
+    <Soyad>Göktekin</Soyad>
+    <Telefon>(555)950 50 49</Telefon>
+    <Email>ogoktekin@gmail.com</Email>
+    <TCKN>28347857438</TCKN>
+    <Maas>3700</Maas>
+    <Branslar>KulakBurunBoğazHastalıkları</Branslar>
+    <Unvan>Docent</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Birsel</Ad>
+    <Soyad>Kavaklı</Soyad>
+    <Telefon>(555)458 09 80</Telefon>
+    <Email>bkavakli@gmail.com</Email>
+    <TCKN>20948498020</TCKN>
+    <Maas>3500</Maas>
+    <Branslar>BeslenmeVeDiyet</Branslar>
+    <Unvan>Diyetisyen</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Serkan</Ad>
+    <Soyad>Akdağ</Soyad>
+    <Telefon>(535)674 59 48</Telefon>
+    <Email>sakdag@gmail.com</Email>
+    <TCKN>20498572755</TCKN>
+    <Maas>4100</Maas>
+    <Branslar>KalpVeDamarCerrahisi</Branslar>
+    <Unvan>Profesor</Unvan>
+  </Doktor>
+  <Doktor>
+    <Ad>Semra</Ad>
+    <Soyad>Kahraman</Soyad>
+    <Telefon>(535)655 08 00</Telefon>
+    <Email>skahraman@gmail.com</Email>
+    <TCKN>28409574578</TCKN>
+    <Maas>3500</Maas>
+    <Branslar>KalpVeDamarCerrahisi</Branslar>
+    <Unvan>UzmanDoktor</Unvan>
+  </Doktor>
+</ArrayOfDoktor>

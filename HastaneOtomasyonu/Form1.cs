@@ -52,7 +52,6 @@ namespace HastaneOtomasyonu
             }
             else frmHemsire.Activate();
         }
-
         private void personelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmPersonel == null || frmPersonel.IsDisposed)
@@ -63,9 +62,7 @@ namespace HastaneOtomasyonu
                 frmPersonel.Show();
             }
             else frmPersonel.Activate();
-
         }
-
         private void hastaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmHasta == null || frmHasta.IsDisposed)
@@ -103,7 +100,7 @@ namespace HastaneOtomasyonu
             {
                 if (kisiler == null) return;
                 XmlSerializer serializer = new XmlSerializer(typeof(T));
-                TextWriter textWriter = new StreamWriter($"{kisiler.ToString().Substring(33)}");
+                TextWriter textWriter = new StreamWriter($@"..\..\Xml\{kisiler.ToString().Substring(33)}.xml");
                 serializer.Serialize(textWriter, kisiler);
                 textWriter.Close();
                 textWriter.Dispose();
@@ -116,7 +113,7 @@ namespace HastaneOtomasyonu
             try
             {
                 XmlSerializer xmlserializer = new XmlSerializer(typeof(T));
-                XmlReader reader =new XmlTextReader($"{kisiler.ToString().Substring(33)}");
+                XmlReader reader =new XmlTextReader($@"..\..\Xml\{kisiler.ToString().Substring(33)}.xml");
                 if (xmlserializer.CanDeserialize(reader))
                 {
                     kisiler = (T)xmlserializer.Deserialize(reader);
