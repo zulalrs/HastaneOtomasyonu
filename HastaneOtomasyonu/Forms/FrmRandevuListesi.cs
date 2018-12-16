@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HastaneOtomasyonu.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,33 @@ namespace HastaneOtomasyonu.Forms
         {
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
+
+            cmbDrRandevu.Items.AddRange(FrmDoktor.Doktorlar.ToArray());
+
+            lstVRandevuEkrani.View = View.Details;
+            lstVRandevuEkrani.FullRowSelect = true;
+
+            lstVRandevuEkrani.Columns.Add("TC", lstVRandevuEkrani.Width / 4);
+            lstVRandevuEkrani.Columns.Add("AD", lstVRandevuEkrani.Width / 4);
+            lstVRandevuEkrani.Columns.Add("SOYAD", lstVRandevuEkrani.Width / 4);
+            lstVRandevuEkrani.Columns.Add("RANDEVU SAATİ", lstVRandevuEkrani.Width / 4);
+        }
+        string[] randevuekrani;    
+        
+        private void cmbDrRandevu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            lstVRandevuEkrani.Items.Clear();
+            foreach (Randevu randevu in FrmRandevu.Randevular)
+            {
+                if (randevu.Doktor.ToString() == cmbDrRandevu.Text)
+                {
+                    randevuekrani = new string[] { randevu.Hasta.TCKN, randevu.Hasta.Ad, randevu.Hasta.Soyad, randevu.Saat };                   
+                    lstVRandevuEkrani.Items.Add(new ListViewItem(randevuekrani));
+                   
+                    
+                }
+            }
         }
     }
 }

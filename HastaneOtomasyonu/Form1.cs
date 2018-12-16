@@ -82,21 +82,34 @@ namespace HastaneOtomasyonu
             if (frmRandevu == null || frmRandevu.IsDisposed)
             {
                 frmRandevu = new FrmRandevu();
+                FrmRandevu.Randevular = İceAktar(FrmRandevu.Randevular);
                 frmRandevu.MdiParent = this;
                 frmRandevu.Show();
             }
             else frmRandevu.Activate();
         }
+        private void randevuListesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmRandevuListesi == null || frmRandevuListesi.IsDisposed)
+            {
+                frmRandevuListesi = new FrmRandevuListesi();
+                FrmRandevu.Randevular = İceAktar(FrmRandevu.Randevular);
+                frmRandevuListesi.MdiParent = this;
+                frmRandevuListesi.Show();
+            }
+            else frmRandevuListesi.Activate();
+        }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.DısaAktar(FrmDoktor.Doktorlar);
-            this.DısaAktar(FrmHemsire.Hemsireler);
-            this.DısaAktar(FrmPersonel.Personeller);
-            this.DısaAktar(FrmHasta.Hastalar);
+            this.DisaAktar(FrmDoktor.Doktorlar);
+            this.DisaAktar(FrmHemsire.Hemsireler);
+            this.DisaAktar(FrmPersonel.Personeller);
+            this.DisaAktar(FrmHasta.Hastalar);
+            this.DisaAktar(FrmRandevu.Randevular);
         }
 
-        public void DısaAktar<T>(T kisiler)
+        public void DisaAktar<T>(T kisiler)
         {
             try
             {
@@ -133,15 +146,6 @@ namespace HastaneOtomasyonu
             return kisiler;
         }
 
-        private void randevuListesiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (frmRandevuListesi == null || frmRandevuListesi.IsDisposed)
-            {
-                frmRandevuListesi = new FrmRandevuListesi();
-                frmRandevuListesi.MdiParent = this;
-                frmRandevuListesi.Show();
-            }
-            else frmRandevuListesi.Activate();
-        }
+       
     }
 }

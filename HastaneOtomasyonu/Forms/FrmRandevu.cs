@@ -20,7 +20,7 @@ namespace HastaneOtomasyonu
         public static List<Randevu> Randevular = new List<Randevu>();
         Doktor seciliDoktor;
         Hasta seciliHasta;
-        Button seciliButon;
+        Button seciliButton;
         private void FrmRandevu_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
@@ -28,9 +28,63 @@ namespace HastaneOtomasyonu
 
             lstRHastalar.Items.AddRange(FrmHasta.Hastalar.ToArray());
             flowLayoutPanel1.Visible = false;
+        }
 
+        private void lstRHastalar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstRHastalar.SelectedItem == null) return;
 
+            cmbPoliklinikler.Items.Clear();
+            cmbDoktorlar.Items.Clear();
+            cmbDoktorlar.Text = string.Empty;
+            cmbPoliklinikler.Text = string.Empty;
+            flowLayoutPanel1.Controls.Clear();
+            cmbPoliklinikler.Items.AddRange(Enum.GetNames(typeof(Poliklinikler)));
+            seciliHasta = lstRHastalar.SelectedItem as Hasta;
+        }
 
+        private void cmbPoliklinikler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbDoktorlar.Items.Clear();
+            cmbDoktorlar.Text = string.Empty;
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Doktor hekimler in FrmDoktor.Doktorlar)
+            {
+                if (cmbPoliklinikler.Text == hekimler.Branslar)
+                    cmbDoktorlar.Items.Add(hekimler);
+            }
+        }
+
+        private void cmbDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Visible = true;
+            ButtonlarıGetir();
+            seciliDoktor = cmbDoktorlar.SelectedItem as Doktor;
+            seciliButton = null;
+
+            foreach (Randevu randevuKontrol in Randevular)
+            {
+                if (seciliDoktor.TCKN == randevuKontrol.Doktor.TCKN)
+                    SecilmisButton(randevuKontrol.Saat);
+                if (seciliHasta.TCKN == randevuKontrol.Hasta.TCKN)
+                    SecilmisButton(randevuKontrol.Saat);
+            }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            seciliButton = (Button)sender;
+            foreach (Button item in flowLayoutPanel1.Controls)
+            {
+                if (item.Name == seciliButton.Name)
+                    seciliButton.BackColor = Color.DarkOrange;
+                else if (item.Enabled)
+                    item.BackColor = Color.ForestGreen;
+            }
+        }
+        private void ButtonlarıGetir()
+        {
             DateTime baslangic = new DateTime(2000, 1, 1, 9, 0, 0);
             do
             {
@@ -40,54 +94,27 @@ namespace HastaneOtomasyonu
                     continue;
                 }
                 Button button = new Button();
-                button.Name = baslangic.ToShortTimeString();
+                button.Name = "btn_" + baslangic.ToShortTimeString();
                 button.Text = baslangic.ToShortTimeString();
-                button.Width = 50;
-                button.Height = 25;
+                button.BackColor = Color.ForestGreen;
+                button.Width = 60;
+                button.Height = 40;
                 button.Click += Button_Click;
                 flowLayoutPanel1.Controls.Add(button);
-
                 baslangic = baslangic.AddMinutes(15);
 
             } while (!(baslangic.Hour == 15));
-
-
-            lstRHastalar.Items.AddRange(FrmHasta.Hastalar.ToArray());
-            flowLayoutPanel1.Visible = false;
         }
-
-        private void Button_Click(object sender, EventArgs e)
+        private void SecilmisButton(string saat)
         {
-            Button btn = (Button)sender;
-            btn.Enabled = false;
-        }
-
-        private void lstRHastalar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstRHastalar.SelectedItem == null) return;
-            cmbPoliklinikler.Items.Clear();
-            cmbDoktorlar.Items.Clear();
-            cmbDoktorlar.Text = string.Empty;
-            flowLayoutPanel1.Controls.Clear();
-            cmbPoliklinikler.Items.AddRange(Enum.GetNames(typeof(Poliklinikler)));
-            seciliHasta = lstRHastalar.SelectedItem as Hasta;
-        }
-
-        private void cmbPoliklinikler_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbDoktorlar.Items.Clear();
-            foreach (Doktor hekimler in FrmDoktor.Doktorlar)
+            foreach (Button btn in flowLayoutPanel1.Controls)
             {
-                if (cmbPoliklinikler.Text == hekimler.Branslar)
+                if (btn.Text == saat && btn.Enabled == true)
                 {
-                    cmbDoktorlar.Items.Add(hekimler);
+                    btn.Enabled = false;
+                    btn.BackColor = Color.LightGray;
                 }
             }
-        }
-
-        private void cmbDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Visible = true;
         }
 
         private void btnRandevuAl_Click(object sender, EventArgs e)
@@ -95,7 +122,7 @@ namespace HastaneOtomasyonu
             
             try
             {
-                if (seciliButon == null)
+                if (seciliButton == null)
                 {
                     throw new Exception("Lütfen bir randevu saati seçiniz.");
                 }
@@ -108,18 +135,17 @@ namespace HastaneOtomasyonu
                         randevu.Doktor = cmbDoktorlar.SelectedItem as Doktor;
                         randevu.Hasta = lstRHastalar.SelectedItem as Hasta;
                         randevu.poliklinikler = (Poliklinikler)Enum.Parse(typeof(Poliklinikler), cmbPoliklinikler.SelectedItem.ToString());
-                        randevu.Saat = seciliButon.Text;
+                        randevu.Saat = seciliButton.Text;
 
                         Randevular.Add(randevu);
-                        seciliButon.BackColor = Color.LightGray;
-                        MessageBox.Show("Randevu | başarıyla kaydedilmiştir.");
+                        seciliButton.BackColor = Color.LightGray;
+                        MessageBox.Show("Randevu başarıyla kaydedilmiştir.");
                     }
                     else return;
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
             lstRHastalar.SelectedItem = null;
