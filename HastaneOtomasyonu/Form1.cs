@@ -94,7 +94,7 @@ namespace HastaneOtomasyonu
             if (frmRandevuListesi == null || frmRandevuListesi.IsDisposed)
             {
                 frmRandevuListesi = new FrmRandevuListesi();
-                FrmRandevu.Randevular = İceAktar(FrmRandevu.Randevular);
+                //FrmRandevu.Randevular = İceAktar(FrmRandevu.Randevular);
                 frmRandevuListesi.MdiParent = this;
                 frmRandevuListesi.Show();
             }
