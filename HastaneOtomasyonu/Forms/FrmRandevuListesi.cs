@@ -1,5 +1,6 @@
 ﻿using HastaneOtomasyonu.Classes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,12 +44,31 @@ namespace HastaneOtomasyonu.Forms
             {
                 if (randevu.Doktor.ToString() == cmbDrRandevu.Text)
                 {
-                    randevuekrani = new string[] { randevu.Hasta.TCKN, randevu.Hasta.Ad, randevu.Hasta.Soyad, randevu.Saat };                   
+                    randevuekrani = new string[] { randevu.Hasta.TCKN, randevu.Hasta.Ad, randevu.Hasta.Soyad, randevu.Saat };
+                    lstVRandevuEkrani.ListViewItemSorter = new ListViewItemComparer(3, lstVRandevuEkrani.Sorting);
                     lstVRandevuEkrani.Items.Add(new ListViewItem(randevuekrani));
-                   
-                    
+
                 }
             }
         }
+
+        public class ListViewItemComparer : IComparer
+        {
+            private int col;
+            private SortOrder order;
+            public ListViewItemComparer(int v, SortOrder sorting)
+            {
+                col = 3;
+                order = SortOrder.Ascending;
+            }
+            public int Compare(object x, object y)
+            {
+                int retunVal = -1;
+                retunVal = string.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+                return retunVal;
+            }
+        }
+
+
     }
 }

@@ -36,6 +36,7 @@ namespace HastaneOtomasyonu
             {
                 frmDoktor = new FrmDoktor();
                 FrmDoktor.Doktorlar = İceAktar(FrmDoktor.Doktorlar);
+                FrmHemsire.Hemsireler = İceAktar(FrmHemsire.Hemsireler);
                 frmDoktor.MdiParent = this;
                 frmDoktor.Show();
             }

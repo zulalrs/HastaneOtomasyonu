@@ -67,17 +67,6 @@
     <dHemsire />
   </Doktor>
   <Doktor>
-    <Ad>Ömer</Ad>
-    <Soyad>Göktekin</Soyad>
-    <Telefon>(555)950 50 49</Telefon>
-    <Email>ogoktekin@gmail.com</Email>
-    <TCKN>28347857438</TCKN>
-    <Maas>3700</Maas>
-    <Branslar>KulakBurunBoğazHastalıkları</Branslar>
-    <Unvan>Docent</Unvan>
-    <dHemsire />
-  </Doktor>
-  <Doktor>
     <Ad>Birsel</Ad>
     <Soyad>Kavaklı</Soyad>
     <Telefon>(555)458 09 80</Telefon>
@@ -108,6 +97,123 @@
     <Maas>3500</Maas>
     <Branslar>KalpVeDamarCerrahisi</Branslar>
     <Unvan>UzmanDoktor</Unvan>
-    <dHemsire />
+    <dHemsire>
+      <Hemsire>
+        <Ad>Alper</Ad>
+        <Soyad>Özbaş</Soyad>
+        <Telefon>(545)550 84 90</Telefon>
+        <Email>aozbas@gmail.com</Email>
+        <TCKN>20948397475</TCKN>
+        <Maas>2400</Maas>
+        <Branslar>KalpVeDamarCerrahisi</Branslar>
+        <atandiMi>true</atandiMi>
+      </Hemsire>
+      <Hemsire>
+        <Ad>Alper</Ad>
+        <Soyad>Özbaş</Soyad>
+        <Telefon>(545)550 84 90</Telefon>
+        <Email>aozbas@gmail.com</Email>
+        <TCKN>20948397475</TCKN>
+        <Maas>2400</Maas>
+        <Branslar>KalpVeDamarCerrahisi</Branslar>
+        <atandiMi>true</atandiMi>
+      </Hemsire>
+    </dHemsire>
+  </Doktor>
+  <Doktor>
+    <Ad>Ömer</Ad>
+    <Soyad>Göktekin</Soyad>
+    <Telefon>(555)950 50 49</Telefon>
+    <Email>ogoktekin@gmail.com</Email>
+    <TCKN>28347857438</TCKN>
+    <Maas>3700</Maas>
+    <Branslar>KulakBurunBoğazHastalıkları</Branslar>
+    <Unvan>Docent</Unvan>
+    <dHemsire>
+      <Hemsire>
+        <Ad>İdil</Ad>
+        <Soyad>Yenicesu</Soyad>
+        <Telefon>(555)942 90 50</Telefon>
+        <Email>yidil@gmail.com</Email>
+        <TCKN>20904809574</TCKN>
+        <Maas>2100</Maas>
+        <Branslar>KulakBurunBoğazHastalıkları</Branslar>
+        <atandiMi>true</atandiMi>
+      </Hemsire>
+      <Hemsire>
+        <Ad>İdil</Ad>
+        <Soyad>Yenicesu</Soyad>
+        <Telefon>(555)942 90 50</Telefon>
+        <Email>yidil@gmail.com</Email>
+        <TCKN>20904809574</TCKN>
+        <Maas>2100</Maas>
+        <Branslar>KulakBurunBoğazHastalıkları</Branslar>
+        <atandiMi>true</atandiMi>
+      </Hemsire>
+    </dHemsire>
+  </Doktor>
+  <Doktor>
+    <Ad>Abdullah</Ad>
+    <Soyad>Erdem</Soyad>
+    <Telefon>(533)754 95 84</Telefon>
+    <Email>aerdem@gmail.com</Email>
+    <TCKN>32748957485</TCKN>
+    <Maas>1000</Maas>
+    <Branslar>GözHastalıkları</Branslar>
+    <Unvan>OperatorDoktor</Unvan>
+    <dHemsire>
+      <Hemsire>
+        <Ad>Zeynep</Ad>
+        <Soyad>Gül</Soyad>
+        <Telefon>(555)739 84 73</Telefon>
+        <Email>zgul@gmail.com</Email>
+        <TCKN>83479284798</TCKN>
+        <Maas>2000</Maas>
+        <Branslar>GözHastalıkları</Branslar>
+        <atandiMi>false</atandiMi>
+      </Hemsire>
+      <Hemsire>
+        <Ad>Zeynep</Ad>
+        <Soyad>Gül</Soyad>
+        <Telefon>(555)739 84 73</Telefon>
+        <Email>zgul@gmail.com</Email>
+        <TCKN>83479284798</TCKN>
+        <Maas>2000</Maas>
+        <Branslar>GözHastalıkları</Branslar>
+        <atandiMi>false</atandiMi>
+      </Hemsire>
+    </dHemsire>
+  </Doktor>
+  <Doktor>
+    <Ad>Mustafa</Ad>
+    <Soyad>Keskin</Soyad>
+    <Telefon>(545)586 75 67</Telefon>
+    <Email>mkeskin@gmail.com</Email>
+    <TCKN>23984945849</TCKN>
+    <Maas>1000</Maas>
+    <Branslar>İçHastalıkları</Branslar>
+    <Unvan>YardımcıDocent</Unvan>
+    <dHemsire>
+      <Hemsire>
+        <Ad>Fırat</Ad>
+        <Soyad>Erdoğan</Soyad>
+        <Telefon>(535)854 98 54</Telefon>
+        <Email>ferdogan@gmail.com</Email>
+        <TCKN>38439843549</TCKN>
+        <Maas>2000</Maas>
+        <Branslar>İçHastalıkları</Branslar>
+        <atandiMi>false</atandiMi>
+      </Hemsire>
+      <Hemsire>
+        <Ad>Fırat</Ad>
+        <Soyad>Erdoğan</Soyad>
+        <Telefon>(535)854 98 54</Telefon>
+        <Email>ferdogan@gmail.com</Email>
+        <TCKN>38439843549</TCKN>
+        <Maas>2000</Maas>
+        <Branslar>İçHastalıkları</Branslar>
+        <atandiMi>false</atandiMi>
+      </Hemsire>
+    </dHemsire>
   </Doktor>
 </ArrayOfDoktor>

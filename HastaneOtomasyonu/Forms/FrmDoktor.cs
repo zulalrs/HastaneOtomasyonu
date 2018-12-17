@@ -76,6 +76,7 @@ namespace HastaneOtomasyonu
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
     
         private void FormuTemizle()
@@ -94,8 +95,8 @@ namespace HastaneOtomasyonu
                     maskedTextBox.Clear();
                 else if (control is ComboBox comboBox)
                     comboBox.Text = string.Empty;
-                else if (control is NumericUpDown)
-                    control.Text = string.Empty;
+                else if (control is NumericUpDown numericUpDown)
+                    numericUpDown.ResetText();
             }
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
