@@ -20,18 +20,27 @@ namespace HastaneOtomasyonu
         public static List<Doktor> Doktorlar = new List<Doktor>();
         List<Doktor> aramalar = new List<Doktor>();
         Doktor seciliKisi;
+        Hemsire seciliHemsire;
         private void FrmDoktor_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             this.Dock = DockStyle.Fill;
             cmbBranslar.Items.AddRange(Enum.GetNames(typeof(Poliklinikler)));
             cmbUnvan.Items.AddRange(Enum.GetNames(typeof(Unvanlar)));
+
+            lstDrHemsire.Items.Clear();
+            foreach (Hemsire item in FrmHemsire.Hemsireler)
+            {
+                lstDrHemsire.Items.Add(item);
+            }
             lstDoktorlar.Items.AddRange(Doktorlar.ToArray());
+            //lstDrHemsire.Items.AddRange(FrmHemsire.Hemsireler.ToArray());
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             Doktor yenikisi = new Doktor();
+            seciliHemsire = (Hemsire)lstDrHemsire.SelectedItem;
             try
             {
                 yenikisi.Ad = txtAd.Text;
@@ -43,16 +52,32 @@ namespace HastaneOtomasyonu
                 yenikisi.Unvan = cmbUnvan.SelectedItem.ToString();
                 yenikisi.Maas = Convert.ToDecimal(nudDoktorMaas.Text);
 
-                Doktorlar.Add(yenikisi);
-                FormuTemizle();
-                lstDoktorlar.Items.AddRange(Doktorlar.ToArray());
+                foreach (Hemsire item in lstDrHemsire.SelectedItems)
+                {
+                    yenikisi.dHemsire.Add(item);
+                }
+                if (seciliHemsire == null)
+                {
+                    MessageBox.Show("Hemşire seçin!");
+                }
+                else
+                {
+                    seciliHemsire.atandiMi = false;
+                    yenikisi.dHemsire.Add(seciliHemsire);
+
+
+                    Doktorlar.Add(yenikisi);
+                    FormuTemizle();
+                    lstDoktorlar.Items.AddRange(Doktorlar.ToArray());
+                    MessageBox.Show("İşlem Başarılı");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
+    
         private void FormuTemizle()
         {
             foreach (Control control in this.Controls)
@@ -75,10 +100,14 @@ namespace HastaneOtomasyonu
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (lstDoktorlar.SelectedItem == null) return;
-            seciliKisi = (Doktor)lstDoktorlar.SelectedItem;
             try
             {
+                if (lstDoktorlar.SelectedItem == null)
+                {
+                    MessageBox.Show(" Güncellemek istediğiniz kişiyi seçiniz. ");
+                    return;
+                }
+                seciliKisi = (Doktor)lstDoktorlar.SelectedItem;
                 seciliKisi.Ad = txtAd.Text;
                 seciliKisi.Soyad = txtSoyad.Text;
                 seciliKisi.Telefon = mtxtTelefon.Text;
@@ -87,6 +116,22 @@ namespace HastaneOtomasyonu
                 seciliKisi.Branslar = cmbBranslar.Text;
                 seciliKisi.Unvan = cmbUnvan.Text;
                 seciliKisi.Maas = Convert.ToDecimal(nudDoktorMaas.Text);
+
+                lstDrHemsire.Items.Clear();
+
+                foreach (Hemsire item in FrmHemsire.Hemsireler)
+                {
+                    lstDrHemsire.Items.Add(item);
+                }
+                seciliKisi = null;
+
+                foreach (Hemsire item in lstDrHemsire.SelectedItems)
+                {
+
+                    seciliKisi.dHemsire.Add(item);
+                }
+
+                MessageBox.Show(" Güncelleme gerçekleşti ");
             }
             catch (Exception ex)
             {
@@ -109,6 +154,7 @@ namespace HastaneOtomasyonu
             cmbBranslar.Text = seciliKisi.Branslar;
             cmbUnvan.Text = seciliKisi.Unvan;
             nudDoktorMaas.Text = seciliKisi.Maas.ToString();
+            //cmbBranslar.Text = "--Select--";
         }
 
         private void btnSil_Click(object sender, EventArgs e)
@@ -118,8 +164,15 @@ namespace HastaneOtomasyonu
             seciliKisi = (Doktor)lstDoktorlar.SelectedItem;
             Doktorlar.Remove(seciliKisi);
 
+            MessageBox.Show("silme işlemi başarılı");
+            foreach (Hemsire item in lstDrHemsire.Items)
+            {
+                item.atandiMi = true;
+            }
+            seciliKisi = null;
             FormuTemizle();
             lstDoktorlar.Items.AddRange(Doktorlar.ToArray());
+            lstDrHemsire.Items.AddRange(FrmHemsire.Hemsireler.ToArray());
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)
@@ -138,8 +191,22 @@ namespace HastaneOtomasyonu
             //nudDoktorMaas.DecimalPlaces = 2;//decimal
             nudDoktorMaas.ThousandsSeparator = true;
             nudDoktorMaas.Increment = 100;//artıs
-            nudDoktorMaas.Minimum = 1000; //en küçük değeri 10
-            nudDoktorMaas.Maximum = 30000; //en büyük değeri 30
+            nudDoktorMaas.Minimum = 1000; 
+            nudDoktorMaas.Maximum = 30000; 
+        }
+
+        private void cmbBranslar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lstDrHemsire.Items.Clear();
+            foreach (Hemsire item in FrmHemsire.Hemsireler)
+            {
+                if (cmbBranslar.Text == item.Branslar)
+
+
+                    lstDrHemsire.Items.Add(item);
+
+
+            }
         }
     }
 }

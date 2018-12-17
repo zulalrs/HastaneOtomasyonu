@@ -121,8 +121,8 @@ namespace HastaneOtomasyonu
             //nudPersonelMaas.DecimalPlaces = 2;//decimal
             nudPersonelMaas.ThousandsSeparator = true;
             nudPersonelMaas.Increment = 100;//artıs
-            nudPersonelMaas.Minimum = 1000; //en küçük değeri 10
-            nudPersonelMaas.Maximum = 30000; //en büyük değeri 30 
+            nudPersonelMaas.Minimum = 1000; 
+            nudPersonelMaas.Maximum = 30000;  
         }
 
         private void txtAra_TextChanged(object sender, EventArgs e)

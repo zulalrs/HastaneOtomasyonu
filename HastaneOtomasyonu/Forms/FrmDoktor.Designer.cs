@@ -84,6 +84,7 @@
             this.cmbBranslar.Name = "cmbBranslar";
             this.cmbBranslar.Size = new System.Drawing.Size(193, 26);
             this.cmbBranslar.TabIndex = 5;
+            this.cmbBranslar.SelectedIndexChanged += new System.EventHandler(this.cmbBranslar_SelectedIndexChanged);
             // 
             // btnSil
             // 

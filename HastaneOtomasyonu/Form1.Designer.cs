@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.doktorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hemşireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,7 @@
             this.personelToolStripMenuItem.Image = global::HastaneOtomasyonu.Properties.Resources.personel;
             this.personelToolStripMenuItem.Name = "personelToolStripMenuItem";
             this.personelToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.personelToolStripMenuItem.Size = new System.Drawing.Size(94, 55);
+            this.personelToolStripMenuItem.Size = new System.Drawing.Size(95, 55);
             this.personelToolStripMenuItem.Text = "Personel";
             this.personelToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.personelToolStripMenuItem.Click += new System.EventHandler(this.personelToolStripMenuItem_Click);
@@ -126,8 +127,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::HastaneOtomasyonu.Properties.Resources.f2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1059, 611);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";

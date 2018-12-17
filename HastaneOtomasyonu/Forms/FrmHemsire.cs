@@ -137,8 +137,8 @@ namespace HastaneOtomasyonu
             //nudHemsireMaas.DecimalPlaces = 2;//decimal
             nudHemsireMaas.ThousandsSeparator = true;
             nudHemsireMaas.Increment = 100;//artıs
-            nudHemsireMaas.Minimum = 1000; //en küçük değeri 10
-            nudHemsireMaas.Maximum = 30000; //en büyük değeri 30
+            nudHemsireMaas.Minimum = 1000; 
+            nudHemsireMaas.Maximum = 30000; 
         }
     }
 }

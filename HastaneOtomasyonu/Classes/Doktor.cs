@@ -13,6 +13,7 @@ namespace HastaneOtomasyonu.Classes
         public string Branslar { get; set; }
 
         public string Unvan { get; set; }
+        public List<Hemsire> dHemsire { get; set; } = new List<Hemsire>();
 
         public override string ToString()
         {

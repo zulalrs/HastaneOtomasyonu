@@ -11,5 +11,6 @@ namespace HastaneOtomasyonu.Classes
         public decimal Maas { get; set; }
 
         public string Branslar { get; set; }
+        public bool atandiMi { get; set; }
     }
 }
